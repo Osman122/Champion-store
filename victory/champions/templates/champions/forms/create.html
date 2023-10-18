@@ -1,0 +1,17 @@
+{%extends 'champions/base.html'%}
+{% load static %}
+
+
+
+    <h1> Add new product  </h1>
+    {%block content%}
+    <form method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script src="{% static  'champions/js/script.js' %}">
+
+</script>
+{%endblock%}

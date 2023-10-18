@@ -1,0 +1,29 @@
+{%extends 'champions/base.html'%}
+{%load static%}
+
+
+  
+{%block content%}
+
+ <h1>{{name}}</h1>
+<div class="row">
+   
+    {%for p in queryset%}
+  
+    <div class="col-3 m-2 card" style="width: 18rem; ">
+      <img class="card-img-top" src="{% static 'champions/images/'|add:p.image %} " height="300" width="150" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{p.id}}</h5>
+        <p class="card-text">{{p.name}}</p>
+        <p class="card-text">{{p.price}}</p>
+        <a href="/champions/product/{{p.id}}" class="btn btn-primary"> View </a>
+        <a href="/champions/product/{{p.id}}/delete" class="btn btn-danger"> delete </a>
+       
+
+      </div> 
+    </div>
+      {% endfor %}
+    
+  </div>
+
+{%endblock%}

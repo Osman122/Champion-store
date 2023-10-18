@@ -1,0 +1,90 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Navbar Example</title>
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css'%}">
+   <link rel="stylesheet" href="{% static 'champions/css/style.css'%}">
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
+    <ul class="nav-item">
+      <li><a href="/champions/home">Home</a></li>
+      <li><a href="/champions/contact">Contact Us</a></li>
+      <li><a href="/champions/about">About Us</a></li>
+      <li><a href="/champions/forms/create">Add product</a></li>
+      <li><a href="/champions/category_list">Show Categories</a></li>
+     
+    </ul>
+   
+    </div>
+     {%if user.id%}
+    
+      <div class="nav-item  ms-auto">
+     <a href="{%url 'profile'%}" class="nav-item  ms-auto">
+      <button class="btn btn-warning me-2 ">{{user}}</button> </a>
+        <a href="{%url 'logout'%}" class="nav-item  ms-auto">
+      <button class="btn btn-secondary  ">log out</button> </a>
+
+      
+      
+      </div>
+
+     {%else%} 
+     <a href="{%url 'login'%}" class="nav-item  ms-auto">
+      <button class="btn btn-primary me-2 ">log in</button> </a>
+
+    {%endif%}
+
+  </nav>
+
+  <div class="body-section">
+    <h1>Welcome to our website!</h1>
+    <div class="navbar-right ml-auto d-flex justify-content-center">
+      <form action="{% url 'search'%}" method="GET">
+          <div class="row">
+              <div class="col-md-6">
+                  <input type="text" name="name" class="form-control form-control-lg" placeholder="Search...">
+              </div>
+              <div class="col-md-6">
+                  <button class="btn btn-primary" type="submit">Search</button>
+              </div>
+          </div>
+          
+      </form>
+  </div>
+    <p>This is the main content of the page.</p>
+  </div>
+  <div class="container">
+  <div class="row">
+    
+      {%for p in products%}
+    
+      <div class="col-3 m-2 card" style="width: 18rem; ">
+        <img class="card-img-top" src="{{p.get_image_url}} " height="300" width="150" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">owner: {{p.owner}}</h5>
+          <p class="card-text">{{p.name}}</p>
+          <p class="card-text">{{p.price}}</p>
+          <p class="card-text">category:{{p.category}}</p>
+          <a href="/champions/product/{{p.id}}" class="btn btn-primary"> View </a>
+          <a href="/champions/product/{{p.id}}/delete" class="btn btn-danger"> delete </a>
+          <a href="/champions/forms/edit/{{p.id}}" class="btn btn-info"> edit </a>
+          
+         
+
+        </div> 
+      </div>
+        {% endfor %}
+      
+    </div>
+  </div>
+  <div class="align-items-end">
+  <footer >
+    <p>&copy; 2023 Your Website. All rights reserved.</p>
+  </footer>
+</div>
+</body>
+<script src="{% static 'bootstrap/js/bootstrap.js'%}"></script>
+</html>

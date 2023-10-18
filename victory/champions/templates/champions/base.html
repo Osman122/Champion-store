@@ -1,0 +1,55 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Navbar Example</title>
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css'%}">
+   <link rel="stylesheet" href="{% static 'champions/css/style.css'%}">
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
+    <ul class="nav-item">
+      <li><a href="/champions/home">Home</a></li>
+      <li><a href="/champions/contact">Contact Us</a></li>
+      <li><a href="/champions/about">About Us</a></li>
+      <li><a href="/champions/forms/create">Add product</a></li>
+      <li><a href="/champions/category_list">Show Categories</a></li>
+     
+    </ul>
+   
+    </div>
+     {%if user.id%}
+    
+      
+     <div class="nav-item  ms-auto">
+      <a href="{%url 'profile'%}" class="nav-item  ms-auto">
+       <button class="btn btn-warning me-2 ">{{user}}</button> </a>
+         <a href="{%url 'logout'%}" class="nav-item  ms-auto">
+       <button class="btn btn-secondary  ">log out</button> </a>
+ 
+       
+       
+       </div>
+
+     {%else%} 
+     <a href="{%url 'login'%}" class="nav-item  ms-auto">
+      <button class="btn btn-primary me-2 ">log in</button> </a>
+
+    {%endif%}
+
+  </nav>
+  
+  <div class="body-section">
+    
+    {%block content%}
+
+    {%endblock%}
+  </div>
+   
+  <footer>
+    <p>&copy; 2023 Your Website. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

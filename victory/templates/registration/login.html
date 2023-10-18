@@ -1,0 +1,19 @@
+{%extends 'champions/base.html'%}
+{% load static %}
+
+
+
+    <h1> Log in  </h1>
+    {%block content%}
+    <div class="m-5 p-5 border-1">
+    <form method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <br>
+  <button type="submit" class="btn btn-primary">login</button>
+</form>
+    </div>
+<script src="{% static  'champions/js/script.js' %}">
+
+</script>
+{%endblock%}

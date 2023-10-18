@@ -1,0 +1,40 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Navbar Example</title>
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css'%}">
+   <link rel="stylesheet" href="{% static 'champions/css/style.css'%}">
+  </style>
+</head>
+<body>
+  
+
+  <div class="body-section">
+    <h1>Welcome to our website!</h1>
+    {{product}}
+    
+  </div>
+  <div class="container">
+  <div class="row">
+    
+      
+    
+      <div class="card m-5 p-5 ">
+        <img class="card-img-top" src="{{product.get_image_url}}  " width="300" height="400" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{prouduct.id}}</h5>
+          <p class="card-text">{{product.name}}</p>
+          <h5 class="card-title">price>> {{product.price}}</h5>
+
+          <a href="/champions/home" class="btn btn-primary"> home </a>
+        </div> 
+      </div>
+    
+      
+    </div>
+  </div>
+  
+</body>
+<script src="{% static 'bootstrap/js/bootstrap.js'%}"></script>
+</html>

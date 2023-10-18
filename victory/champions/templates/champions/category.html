@@ -1,0 +1,19 @@
+{%extends 'champions/base.html'%}
+
+
+  
+{%block content%}
+<h1>this our categories</h1>
+
+<ul>
+
+    {%for c in categories%}
+    <li>
+        <h3><a href="/champions/category/{{c.name}}/">{{c.name}}</a>
+        </h3>
+    </li>
+{%endfor%}
+</ul>
+ 
+    
+{%endblock%}
